@@ -5,6 +5,7 @@ package _01_Custom_ArrayList;
 public class ArrayList <T>{
 	
 	public ArrayList() {
+		T[]  arr = (T[]) new Object[0];
 	}
 	
 	public T get(int loc) throws IndexOutOfBoundsException {
