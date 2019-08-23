@@ -122,20 +122,20 @@ public class CustomArrayListTest {
 		assertTrue(list2.size() == 3);
 	}
 	
-//	@Test
-//	public void testSizeOnRemove() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("This");
-//		list.add("is");
-//		list.add("only");
-//		list.add("a");
-//		list.add("test");
-//		
-//		assertTrue(list.size() == 5);
-//		
-//		list.remove(0);
-//		list.remove(0);
-//		
-//		assertTrue(list.size() == 3);
-//	}
+	@Test
+	public void testSizeOnRemove() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("This");
+		list.add("is");
+		list.add("only");
+		list.add("a");
+		list.add("test");
+		
+		assertTrue(list.size() == 5);
+		
+		list.remove(0);
+		list.remove(0);
+		
+		assertTrue(list.size() == 3);
+	}
 }

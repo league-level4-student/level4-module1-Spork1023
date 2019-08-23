@@ -44,7 +44,7 @@ public class ArrayList<T> {
 
 	public void remove(int loc) throws IndexOutOfBoundsException {
 		T[] arr2 = (T[]) new Object[arr.length - 1];
-		for (int i = 0; i < arr2.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			if(i < loc) {
 				arr2[i] = arr[i];
 			}
@@ -56,8 +56,17 @@ public class ArrayList<T> {
 	}
 
 	public boolean contains(T val) {
-
-		return false;
+		boolean re = false;
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i] == val) {
+				re = true;
+				break;
+			}
+			else {
+				re = false;
+			}
+		}
+		return re;
 	}
 	public int size() {
 		return arr.length;
