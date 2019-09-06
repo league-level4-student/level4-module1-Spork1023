@@ -64,47 +64,87 @@ public class Snake {
 		}
 		
 		//3. set the location of the head to the new location calculated in step 1
-		
+		head.setLocation(getHeadLocation());
 
 		//4. set canMove to true
-		
+		canMove = true;
 	}
 
 	public void setDirection(Direction d) {
 		//1. set the current direction equal to the passed in Direction only if canMove is true.
 		//   set canMove equal to false.
 		//   make sure the snake cannot completely reverse directions.
-		
+		if(canMove) {
+			currentDirection = d;
+			canMove = false;
+		}
+		if(d == Direction.UP && currentDirection == Direction.DOWN) {
+			canMove = false;
+		}
+		else if(d == Direction.DOWN && currentDirection == Direction.UP) {
+			canMove = false;
+		}
+		else if(d == Direction.LEFT && currentDirection == Direction.RIGHT) {
+			canMove = false;
+		}
+		else if(d == Direction.RIGHT && currentDirection == Direction.LEFT) {
+			canMove = false;
+		}
 	}
 
 	public void reset(Location loc) {
 		//1. clear the snake
-		
+		snake.clear();
 		//2. set the location of the head
-		
+		head.setLocation(loc);
 		//3. add the head to the snake
-		
+		snake.add(head);
 	}
 
 	public boolean isOutOfBounds() {
 		//1. complete the method so it returns true if the head of the snake is outside of the window
 		//   and false otherwise
-		
-		return false;
+		boolean rt = false;
+		if(getHeadLocation().x > 15) {
+			rt = true;
+		}
+		else if(getHeadLocation().x < 0) {
+			rt = true;
+		}
+		else if(getHeadLocation().y > 12) {
+			rt = true;
+		}
+		else if(getHeadLocation().y < 0) {
+			rt = true;
+		}
+		return rt;
 	}
 	
 	public boolean isHeadCollidingWithBody() {
 		//1. complete the method so it returns true if the head is located
 		//   in the same location as any other body segment
-		
-		return false;
+		boolean rt = false;
+		for (int i = 1; i < snake.size(); i++) {
+			if(snake.get(i) == snake.get(0)) {
+				rt = true;
+			}
+		}
+		return rt;
 	}
 
 	public boolean isLocationOnSnake(Location loc) {
 		//1. complete the method so it returns true if the passed in
 		//   location is located on the snake
-		
-		return false;
+		boolean rt = false;
+		for (int i = 0; i < snake.size(); i++) {
+			if(snake.get(i).getLocation() == loc) {
+				rt = true;
+			}
+			else {
+				rt = false;
+			}
+		}
+		return rt;
 	}
 
 	public void draw(Graphics g) {

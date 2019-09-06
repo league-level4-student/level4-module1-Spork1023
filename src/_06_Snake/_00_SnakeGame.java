@@ -134,7 +134,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	}
 	
 	private Location setRandomLocation() {
-		Location loc = new Location(r.nextInt(WIDTH), r.nextInt(HEIGHT));
+		Location loc = new Location(r.nextInt(WIDTH) + 1, r.nextInt(HEIGHT) + 1);
 		return loc;
 	}
 
