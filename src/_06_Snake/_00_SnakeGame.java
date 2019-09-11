@@ -37,7 +37,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 	private Location foodLocation;
 	
-	private Random r;
+	private Random r = new Random();
 
 	public _00_SnakeGame() {
 		snake = new Snake(new Location(WIDTH / 2, HEIGHT / 2));
@@ -118,13 +118,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		switch(e.getKeyCode()) {
 		// if an arrow key is pressed, set the snake's 
 		// direction accordingly
-		case KeyEvent.VK_UP:
+		case KeyEvent.VK_W:
 			snake.setDirection(Direction.UP);
-		case KeyEvent.VK_RIGHT:
+		case KeyEvent.VK_D:
 			snake.setDirection(Direction.RIGHT);
-		case KeyEvent.VK_LEFT:
+		case KeyEvent.VK_A:
 			snake.setDirection(Direction.LEFT);
-		case KeyEvent.VK_DOWN:
+		case KeyEvent.VK_S:
 			snake.setDirection(Direction.DOWN);
 		// if the space key is pressed, call the snake's feed method
 			if(e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -147,6 +147,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// on the snake
 		if(!snake.isLocationOnSnake(loc)) {
 			foodLocation = loc;
+			System.out.println(loc.x + " " + loc.y);
 		}
 		else {
 			setFoodLocation();
@@ -191,7 +192,8 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		}
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
-		if(snake.getHeadLocation() == foodLocation) {
+		if(snake.getHeadLocation().x == foodLocation.x && snake.getHeadLocation().y == foodLocation.y) {
+			System.out.println("HIT");
 			snake.feed();
 			setFoodLocation();
 		}
