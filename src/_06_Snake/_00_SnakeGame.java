@@ -118,13 +118,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		switch(e.getKeyCode()) {
 		// if an arrow key is pressed, set the snake's 
 		// direction accordingly
-		case KeyEvent.VK_W:
+		case KeyEvent.VK_UP:
 			snake.setDirection(Direction.UP);
-		case KeyEvent.VK_D:
+		case KeyEvent.VK_RIGHT:
 			snake.setDirection(Direction.RIGHT);
-		case KeyEvent.VK_A:
+		case KeyEvent.VK_LEFT:
 			snake.setDirection(Direction.LEFT);
-		case KeyEvent.VK_S:
+		case KeyEvent.VK_DOWN:
 			snake.setDirection(Direction.DOWN);
 		// if the space key is pressed, call the snake's feed method
 			if(e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -134,7 +134,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	}
 	
 	private Location setRandomLocation() {
-		Location loc = new Location(r.nextInt(WIDTH) + 1, r.nextInt(HEIGHT) + 1);
+		Location loc = new Location(r.nextInt(WIDTH), r.nextInt(HEIGHT));
 		return loc;
 	}
 
@@ -167,8 +167,9 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// reset the snake and the food and start the timer
 		// else, exit the game
 		if(result == 0) {
-			snake.reset(setRandomLocation());
+			snake.reset(new Location(WIDTH / 2, HEIGHT / 2));
 			setFoodLocation();
+			timer.start();
 		}
 		else {
 			System.exit(0);
